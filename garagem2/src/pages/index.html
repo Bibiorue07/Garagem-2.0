@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garagem de Veículos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #005f73, #0a9396);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .container p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .anuncio {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #e9f5f6;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .anuncio:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .anuncio h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .detalhes {
+            font-size: 1rem;
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .preco {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #e63946;
+        }
+
+        .imagem {
+            max-width: 200px;
+            max-height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+
+        footer {
+            background: #005f73;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            border-radius: 0 0 8px 8px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Garagem de Veículos - BCV</h1>
+    <p>Encontre o seu próximo carro com facilidade!</p>
+    <p>Bianca Oruê, Camille Marques e Vitória Lorramy</p>
+</header>
+
+<div class="container">
+    <p>Confira abaixo os veículos à venda. Todos em excelente estado de conservação.</p>
+
+    <div id="anuncios"></div>
+</div>
+
+<footer>
+    <p>Rua Tadao, R. Amelia Arima, 222 - Vila Ycaraí, Aquidauana - MS, 79200-000</p>
+</footer>
+
+<script>
+    // Dados dos anúncios de veículos, agora com URLs de imagens
+    const veiculos = [
+        {"nome": "Fusca", "fabricante": "Volkswagen", "ano": 1968, "combustivel": "Gasolina", "cor": "Azul", "preco": "R$ 20.000,00", "imagem": "./img/fusca.jpeg"},
+        {"nome": "Civic", "fabricante": "Honda", "ano": 2020, "combustivel": "Gasolina", "cor": "Preto", "preco": "R$ 90.000,00", "imagem": "./img/civic.jpeg"},
+        {"nome": "Corolla", "fabricante": "Toyota", "ano": 2021, "combustivel": "Flex", "cor": "Branco", "preco": "R$ 95.000,00", "imagem": "./img/corolla.jpeg"},
+        {"nome": "Palio", "fabricante": "Fiat", "ano": 2015, "combustivel": "Álcool", "cor": "Vermelho", "preco": "R$ 25.000,00", "imagem": "./img/palio.jpeg"},
+        {"nome": "Gol", "fabricante": "Volkswagen", "ano": 2019, "combustivel": "Flex", "cor": "Cinza", "preco": "R$ 35.000,00", "imagem": "./img/gol.jpeg"}
+    ];
+
+    // Função para exibir os veículos na página
+    function exibirAnuncios() {
+        const container = document.getElementById("anuncios");
+        veiculos.forEach(veiculo => {
+            const anuncio = document.createElement("div");
+            anuncio.classList.add("anuncio");
+
+            anuncio.innerHTML = `
+                <div>
+                    <h2>${veiculo.nome} - ${veiculo.fabricante} (${veiculo.ano})</h2>
+                    <p class="detalhes">Combustível: ${veiculo.combustivel}</p>
+                    <p class="detalhes">Cor: ${veiculo.cor}</p>
+                    <p class="preco">${veiculo.preco}</p>
+                </div>
+                <img src="${veiculo.imagem}" alt="${veiculo.nome}" class="imagem">
+            `;
+
+            container.appendChild(anuncio);
+        });
+    }
+
+    //função para exibir os anúncios quando a página for carregada
+    window.onload = exibirAnuncios;
+</script>
+
+</body>
+</html>
